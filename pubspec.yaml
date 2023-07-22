@@ -1,0 +1,33 @@
+name: atomic_design
+description: A new Flutter project.
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.3 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  flutter_svg: 2.0.7
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  assets:
+    - assets/icons/
+    - assets/fonts/SamsungSans/
+  fonts:
+    - family: SamsungSans
+      fonts:
+        - asset: assets/fonts/SamsungSans/SamsungSans-Bold.ttf
+        - asset: assets/fonts/SamsungSans/SamsungSans-Light.ttf
+        - asset: assets/fonts/SamsungSans/SamsungSans-Medium.ttf
+        - asset: assets/fonts/SamsungSans/SamsungSans-Regular.ttf
+        - asset: assets/fonts/SamsungSans/SamsungSans-Thin.ttf
