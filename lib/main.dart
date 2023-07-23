@@ -1,9 +1,4 @@
-import 'package:atomic_design/one_ui_nested_scroll_view.dart';
-import 'package:atomic_design/ui/atoms/one_ui_bottom_navigation_item.dart';
-import 'package:atomic_design/ui/foundations/icons.dart';
-import 'package:atomic_design/ui/organisms/one_ui_bottom_navigation_bar.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:atomic_design/ui/one_ui.dart';
 
 void main() {
   runApp(const MyApp());
