@@ -1,4 +1,5 @@
-import 'package:atomic_design/one_ui.dart';
+import 'package:atomic_design/one_ui_nested_scroll_view.dart';
+import 'package:atomic_design/ui/foundations/icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -33,13 +34,43 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SvgPicture.asset(OneUIIcons.back),
-          ],
+      body: OneUINestedScrollView(
+        expandedWidget: const Text(
+          'Clock',
+          style: TextStyle(fontSize: 30),
         ),
+        collapsedWidget: const Text(
+          'Clock',
+          style: TextStyle(fontSize: 20),
+        ),
+        boxDecoration: BoxDecoration(
+          color: Theme.of(context).scaffoldBackgroundColor,
+        ),
+        leadingIcon: IconButton(
+          onPressed: () => {},
+          icon: SvgPicture.asset(OneUIIcons.drawer),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: SvgPicture.asset(OneUIIcons.more),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: SvgPicture.asset(OneUIIcons.search),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: SvgPicture.asset(OneUIIcons.abAdd),
+          ),
+        ],
+        sliverList: SliverList(
+            delegate: SliverChildBuilderDelegate(
+          (context, index) => ListTile(
+            leading: SvgPicture.asset(OneUIIcons.contact),
+            title: Text('Contact $index'),
+          ),
+        )),
       ),
     );
   }
