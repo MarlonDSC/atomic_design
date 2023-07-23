@@ -137,7 +137,7 @@ class OneUIIcons {
       'assets/icons/budsproNotifications.svg';
   static const String budsproTouchAndHoldTouchpad =
       'assets/icons/budsproTouchAndHoldTouchpad.svg';
-  static const String budspro_LockTouchpad =
+  static const String budsproLockTouchpad =
       'assets/icons/budspro_LockTouchpad.svg';
   static const String budTouchpad = 'assets/icons/budTouchpad.svg';
   static const String calculation = 'assets/icons/calculation.svg';
