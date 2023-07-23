@@ -1,7 +1,4 @@
-import 'package:atomic_design/one_ui_nested_scroll_view.dart';
-import 'package:atomic_design/ui/foundations/icons.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:atomic_design/ui/one_ui.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,6 +28,14 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,6 +76,27 @@ class _MyHomePageState extends State<MyHomePage> {
             title: Text('Contact $index'),
           ),
         )),
+      ),
+      bottomNavigationBar: OneUIBottomNavigationBar(
+        currentIndex: _selectedIndex,
+        items: [
+          OneUIBottomNavigationItem(
+            child: 'Alarm',
+            onPressed: () => _onItemTapped(0),
+          ),
+          OneUIBottomNavigationItem(
+            child: 'World clock',
+            onPressed: () => _onItemTapped(1),
+          ),
+          OneUIBottomNavigationItem(
+            child: 'Stopwatch',
+            onPressed: () => _onItemTapped(2),
+          ),
+          OneUIBottomNavigationItem(
+            child: 'Timer',
+            onPressed: () => _onItemTapped(3),
+          ),
+        ],
       ),
     );
   }

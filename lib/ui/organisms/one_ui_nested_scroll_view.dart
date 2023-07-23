@@ -1,5 +1,5 @@
-import 'package:atomic_design/fade_animation.dart';
-import 'package:atomic_design/one_ui_scroll_physics.dart';
+import 'package:atomic_design/ui/foundations/animations/fade_animation.dart';
+import 'package:atomic_design/ui/foundations/animations/one_ui_scroll_physics.dart';
 import 'package:flutter/material.dart';
 
 class OneUINestedScrollView extends StatefulWidget {
