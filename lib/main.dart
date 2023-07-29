@@ -39,64 +39,20 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: OneUINestedScrollView(
-        expandedWidget: const Text(
-          'Clock',
-          style: TextStyle(fontSize: 30),
-        ),
-        collapsedWidget: const Text(
-          'Clock',
-          style: TextStyle(fontSize: 20),
-        ),
-        boxDecoration: BoxDecoration(
-          color: Theme.of(context).scaffoldBackgroundColor,
-        ),
-        leadingIcon: IconButton(
-          onPressed: () => {},
-          icon: SvgPicture.asset(OneUIIcons.drawer),
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: SvgPicture.asset(OneUIIcons.more),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: SvgPicture.asset(OneUIIcons.search),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: SvgPicture.asset(OneUIIcons.abAdd),
-          ),
-        ],
-        sliverList: SliverList(
-            delegate: SliverChildBuilderDelegate(
-          (context, index) => ListTile(
-            leading: SvgPicture.asset(OneUIIcons.contact),
-            title: Text('Contact $index'),
-          ),
-        )),
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: [for (final tabItem in TabNavigationItem.items) tabItem.page],
       ),
       bottomNavigationBar: OneUIBottomNavigationBar(
         currentIndex: _selectedIndex,
-        items: [
-          OneUIBottomNavigationItem(
-            child: 'Alarm',
-            onPressed: () => _onItemTapped(0),
-          ),
-          OneUIBottomNavigationItem(
-            child: 'World clock',
-            onPressed: () => _onItemTapped(1),
-          ),
-          OneUIBottomNavigationItem(
-            child: 'Stopwatch',
-            onPressed: () => _onItemTapped(2),
-          ),
-          OneUIBottomNavigationItem(
-            child: 'Timer',
-            onPressed: () => _onItemTapped(3),
-          ),
-        ],
+        items: TabNavigationItem.items
+            .asMap()
+            .entries
+            .map((e) => OneUIBottomNavigationItem(
+                  onPressed: () => _onItemTapped(e.key),
+                  child: e.value.child,
+                ))
+            .toList(),
       ),
     );
   }
