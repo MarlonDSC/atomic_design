@@ -18,18 +18,10 @@ class AlarmPage extends StatelessWidget {
       boxDecoration: BoxDecoration(
         color: Theme.of(context).scaffoldBackgroundColor,
       ),
-      leadingIcon: IconButton(
-        onPressed: () => {},
-        icon: SvgPicture.asset(OneUIIcons.drawer),
-      ),
       actions: [
         IconButton(
           onPressed: () {},
           icon: SvgPicture.asset(OneUIIcons.more),
-        ),
-        IconButton(
-          onPressed: () {},
-          icon: SvgPicture.asset(OneUIIcons.search),
         ),
         IconButton(
           onPressed: () {},
