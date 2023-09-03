@@ -115,14 +115,19 @@ class _OneUINestedScrollViewState extends State<OneUINestedScrollView> {
 
   Widget body() {
     return Container(
-      color: widget.sliverBackgroundColor,
+      color: widget.sliverBackgroundColor ??
+          Theme.of(context).colorScheme.background,
       child: Builder(
         builder: (context) => CustomScrollView(
           slivers: [
             SliverOverlapInjector(
-                handle:
-                    NestedScrollView.sliverOverlapAbsorberHandleFor(context)),
-            widget.sliverList
+              handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
+            ),
+            // widget.sliverList,
+            SliverPadding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              sliver: widget.sliverList,
+            )
           ],
         ),
       ),
