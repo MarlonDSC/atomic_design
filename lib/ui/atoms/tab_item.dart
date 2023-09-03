@@ -1,4 +1,6 @@
 import 'package:atomic_design/ui/one_ui.dart';
+import 'package:atomic_design/features/alarm/presentation/pages/alarm_page.dart'
+    as alarm;
 
 class TabNavigationItem {
   final Widget page;
@@ -11,7 +13,7 @@ class TabNavigationItem {
 
   static List<TabNavigationItem> get items => [
         TabNavigationItem(
-          page: const AlarmPage(
+          page: const alarm.AlarmPage(
             title: 'Alarm',
           ),
           child: 'Alarm',
