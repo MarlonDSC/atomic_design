@@ -1,6 +1,11 @@
+import 'package:atomic_design/features/app/presentation/bloc/local_theme/local_theme_bloc.dart';
+import 'package:atomic_design/injection_container.dart';
 import 'package:atomic_design/ui/one_ui.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await initializeDependencies();
   runApp(const MyApp());
 }
 
@@ -9,13 +14,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Clock',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurpleAccent),
-        useMaterial3: true,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => LocalThemeBloc(),
+        )
+      ],
+      child: const MaterialApp(
+        title: 'Clock',
+        home: MyHomePage(),
       ),
-      home: const MyHomePage(),
     );
   }
 }
