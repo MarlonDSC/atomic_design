@@ -6,6 +6,8 @@ class StopwatchPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text('Stopwatch');
+    return const Center(
+      child: Text('Stopwatch'),
+    );
   }
 }

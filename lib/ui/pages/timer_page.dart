@@ -9,6 +9,8 @@ class TimerPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text('Timer');
+    return const Center(
+      child: Text('Timer'),
+    );
   }
 }

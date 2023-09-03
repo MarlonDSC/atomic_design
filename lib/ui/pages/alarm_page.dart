@@ -6,35 +6,8 @@ class AlarmPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return OneUINestedScrollView(
-      expandedWidget: Text(
-        title,
-        style: const TextStyle(fontSize: 30),
-      ),
-      collapsedWidget: Text(
-        title,
-        style: const TextStyle(fontSize: 20),
-      ),
-      boxDecoration: BoxDecoration(
-        color: Theme.of(context).scaffoldBackgroundColor,
-      ),
-      actions: [
-        IconButton(
-          onPressed: () {},
-          icon: SvgPicture.asset(OneUIIcons.more),
-        ),
-        IconButton(
-          onPressed: () {},
-          icon: SvgPicture.asset(OneUIIcons.abAdd),
-        ),
-      ],
-      sliverList: SliverList(
-          delegate: SliverChildBuilderDelegate(
-        (context, index) => ListTile(
-          leading: SvgPicture.asset(OneUIIcons.contact),
-          title: Text('Contact $index'),
-        ),
-      )),
+    return const Center(
+      child: Text('Alarm'),
     );
   }
 }
