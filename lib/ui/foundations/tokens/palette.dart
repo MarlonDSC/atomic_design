@@ -37,6 +37,7 @@ Palette lightPalette = LightPalette(
   switchColors: SwitchColors(
     enabled: AppColors.kBlueLotus,
     disabled: AppColors.kLemonGrass,
+    toggle: AppColors.kSoapstone,
   ),
   textColors: TextColors(
     disabled: AppColors.kGrayCloud,
