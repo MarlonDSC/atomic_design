@@ -26,12 +26,13 @@ class ScaffoldColors {
 
 class SwitchColors {
   final Color enabled;
-
   final Color disabled;
+  final Color toggle;
 
   SwitchColors({
     required this.enabled,
     required this.disabled,
+    required this.toggle,
   });
 }
 
