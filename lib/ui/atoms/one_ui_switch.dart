@@ -1,4 +1,6 @@
+import 'package:atomic_design/features/app/presentation/bloc/local_theme/local_theme_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class OneUISwitch extends StatefulWidget {
   final bool value;
@@ -10,70 +12,76 @@ class OneUISwitch extends StatefulWidget {
 }
 
 class _OneUISwitchState extends State<OneUISwitch> {
-  bool _isSwitched = false;
+  bool _isDisabled = false;
 
   @override
   void initState() {
-    _isSwitched = widget.value;
+    _isDisabled = widget.value;
     super.initState();
   }
 
   void _toggleSwitch(bool value) {
     setState(() {
-      _isSwitched = value;
+      _isDisabled = value;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialButton(
-      shape: const CircleBorder(),
-      onPressed: widget.onChanged != null
-          ? () {
-              _toggleSwitch(!_isSwitched);
-              widget.onChanged!(_isSwitched);
-            }
-          : null,
-      child: SizedBox(
-        width: 38,
-        height: 50,
-        child: Stack(
-          children: [
-            AnimatedAlign(
-              alignment:
-                  _isSwitched ? Alignment.centerLeft : Alignment.centerRight,
-              duration: const Duration(milliseconds: 180),
-              child: Container(
-                width: 38,
-                height: 18,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(25),
-                  color: _isSwitched
-                      ? Colors.grey[600]
-                      : Theme.of(context).primaryColor,
+    return BlocBuilder<LocalThemeBloc, LocalThemeState>(
+      builder: (context, state) {
+        return MaterialButton(
+          shape: const CircleBorder(),
+          onPressed: widget.onChanged != null
+              ? () {
+                  _toggleSwitch(!_isDisabled);
+                  widget.onChanged!(_isDisabled);
+                }
+              : null,
+          child: SizedBox(
+            width: 38,
+            height: 50,
+            child: Stack(
+              children: [
+                AnimatedAlign(
+                  alignment: _isDisabled
+                      ? Alignment.centerLeft
+                      : Alignment.centerRight,
+                  duration: const Duration(milliseconds: 180),
+                  child: Container(
+                    width: 38,
+                    height: 18,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(25),
+                      color: _isDisabled
+                          ? state.palette.switchColors.disabled
+                          : state.palette.switchColors.enabled,
+                    ),
+                  ),
                 ),
-              ),
+                AnimatedAlign(
+                  alignment: _isDisabled
+                      ? Alignment.centerLeft
+                      : Alignment.centerRight,
+                  duration: const Duration(milliseconds: 180),
+                  child: Container(
+                    width: 22.5,
+                    height: 22.5,
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: state.palette.switchColors.toggle,
+                        border: Border.all(
+                            color: _isDisabled
+                                ? state.palette.switchColors.disabled
+                                : state.palette.switchColors.enabled,
+                            width: 1.0)),
+                  ),
+                ),
+              ],
             ),
-            AnimatedAlign(
-              alignment:
-                  _isSwitched ? Alignment.centerLeft : Alignment.centerRight,
-              duration: const Duration(milliseconds: 180),
-              child: Container(
-                width: 22.5,
-                height: 22.5,
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.white,
-                    border: Border.all(
-                        color: _isSwitched
-                            ? Colors.grey
-                            : Theme.of(context).colorScheme.primary,
-                        width: 1.0)),
-              ),
-            ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }
